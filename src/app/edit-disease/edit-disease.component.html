@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Add Disease</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="umlsCodeDisease">UMLS Code:</label>
+            <input type="text" class="form-control" id="umlsCodeDisease" name="umlsCode" [(ngModel)]="disease.umlsCode" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="nameDisease" [(ngModel)]="disease.name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="symptomSearchField">Add Symptoms:</label>
+            <ng-select class="form-control custom-ng-select"
+                       [items]="searchResults"
+                       id="symptomSearchField"
+                       bindLabel="description"
+                       name="searchForm"
+                       [(ngModel)]="selectedSymptoms"
+                       (search)="captureSearchText($event)"
+                       (change)="onItemSelect($event)"
+                       [multiple]="true"
+                       [searchable]="true">
+            </ng-select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a routerLink="/disease" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

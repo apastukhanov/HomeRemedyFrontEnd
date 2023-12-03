@@ -1,0 +1,56 @@
+<div class="card my-5">
+  <div class="card-body">
+
+    <!-- Add Symptom Button -->
+    <div class="mb-2 d-flex justify-content-between">
+      <div>
+        <button [routerLink]="['/symptoms/add']" class="btn btn-success">Add</button>
+      </div>
+      <div>
+        <button class="btn btn-primary mr-1" (click)="editSelectedSymptom()" [disabled]="!canEditSymptom()">Edit</button>
+        <button class="btn btn-danger" (click)="deleteSelectedSymptoms()">Delete</button>
+      </div>
+    </div>
+
+    <!-- Search Field -->
+    <div class="mb-3 d-flex align-items-center">
+      <div class="col pl-0">
+        <input type="text" class="form-control" placeholder="Search by Description" [(ngModel)]="searchTerm">
+      </div>
+      <div class="col-auto pr-0">
+        <button class="btn btn-primary btn-block" (click)="searchSymptoms()">Search</button>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">
+          <input type="checkbox" (click)="selectAll($event)">
+        </th>
+        <th scope="col">Umls Code</th>
+        <th scope="col">Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let symptom of symptoms" (click)="toggleSymptomSelection(symptom, $event)">
+        <td>
+          <input type="checkbox" [(ngModel)]="symptom.selected" (click)="$event.stopPropagation()">
+        </td>
+        <td>{{ symptom.umlsCode }}</td>
+        <td>{{ symptom.description }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button (click)="firstPage()" [disabled]="currentPage <= 0"><<</button>
+      <button (click)="previousPage()" [disabled]="currentPage <= 0">Previous</button>
+      <span>Page {{ currentPage + 1}} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+      <button (click)="lastPage()" [disabled]="currentPage >= totalPages - 1">>></button>
+    </div>
+
+  </div>
+</div>

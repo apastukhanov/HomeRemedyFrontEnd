@@ -1,3 +1,46 @@
 import { Routes } from '@angular/router';
+import { MedicineListComponent } from './medicine-list/medicine-list.component';
+import {DiseaseListComponent} from "./disease-list/disease-list.component";
+import {SymptomListComponent} from "./symptom-list/symptom-list.component";
+import {EditSymptomComponent} from "./edit-symptom/edit-symptom.component";
+import {AddSymptomComponent} from "./add-symptom/add-symptom.component";
+import {AddDiseaseComponent} from "./add-disease/add-disease.component";
+import {EditDiseaseComponent} from "./edit-disease/edit-disease.component";
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+      path: 'medicine',
+      component: MedicineListComponent,
+      title: 'Medicine'
+    },
+    {
+      path: 'disease',
+      component: DiseaseListComponent,
+      title: 'Disease'
+    },
+    {
+      path: 'symptom',
+      component: SymptomListComponent,
+      title: 'Symptom'
+    },
+    {
+      path: 'symptoms/edit/:id',
+      component: EditSymptomComponent,
+      title: 'Edit Symptom'
+    },
+    {
+      path: 'symptoms/add',
+      component: AddSymptomComponent,
+      title: 'Add Symptom'
+    },
+    {
+        path: 'disease/add',
+        component: AddDiseaseComponent,
+        title: 'Add Disease'
+    },
+    {
+        path: 'disease/edit/:id',
+        component: EditDiseaseComponent,
+        title: 'Edit Disease'
+    }
+];

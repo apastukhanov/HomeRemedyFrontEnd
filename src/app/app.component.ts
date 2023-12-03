@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router'; // Import RouterModule
+import { HttpClientModule } from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HttpClientModule
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] // Change to styleUrls and use array
 })
 export class AppComponent {
-  title = 'home-remedy-ui';
+  title = 'Home Remedy';
 }

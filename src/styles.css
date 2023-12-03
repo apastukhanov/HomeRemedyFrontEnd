@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.custom-ng-select .ng-dropdown-panel {
+    background-color: white;
+    z-index: 1000;
+    outline: 1px solid lightgray; /* Replace with your desired outline color */
+    max-height: 125px; /* Adjust as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    border-radius: 10px;
+}
+.custom-ng-select .ng-select-container .ng-value {
+    background-color: lightblue;
+    outline: 1px solid lightblue;
+    border-radius: 4px;
+    margin: 4px;
+}
+
