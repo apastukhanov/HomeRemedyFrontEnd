@@ -1,1 +1,36 @@
-<p>edit-medicine works!</p>
+<div class="container">
+  <h2>Edit Medicine</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="medicineName">Name:</label>
+      <input type="text" class="form-control" id="medicineName" name="medicineName" [(ngModel)]="medicine.name" required>
+    </div>
+    <div class="form-group">
+      <label for="expirationDate">Expiration Date:</label>
+      <input type="date" class="form-control" id="expirationDate" name="expirationDate" [(ngModel)]="medicine.expirationDate" required>
+    </div>
+
+    <div class="form-group">
+      <label for="useDescription">Use Description</label>
+      <input type="textarea" class="form-control" id="useDescription" name="useDescription" [(ngModel)]="medicine.useDescription" required>
+    </div>
+
+    <div class="form-group">
+      <label for="diseaseSearchField">Add Diseases:</label>
+      <ng-select class="form-control custom-ng-select"
+                 [items]="searchResults"
+                 id="diseaseSearchField"
+                 bindLabel="name"
+                 name="searchForm"
+                 [(ngModel)]="selectedDiseases"
+                 (search)="captureSearchText($event)"
+                 (change)="onItemSelect($event)"
+                 [multiple]="true"
+                 [searchable]="true">
+      </ng-select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a routerLink="/medicine" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>

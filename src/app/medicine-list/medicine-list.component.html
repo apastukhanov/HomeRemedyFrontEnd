@@ -1,20 +1,56 @@
 <div class="card my-5">
   <div class="card-body">
+
+    <!-- Add Symptom Button -->
+    <div class="mb-2 d-flex justify-content-between">
+      <div>
+        <button [routerLink]="['/medicine/add']" class="btn btn-success">Add</button>
+      </div>
+      <div>
+        <button class="btn btn-primary mr-1" (click)="editSelectedMedicine()" [disabled]="!canEditMedicine()">Edit</button>
+        <button class="btn btn-danger" (click)="deleteSelectedMedicine()">Delete</button>
+      </div>
+    </div>
+
+    <!-- Search Field -->
+    <div class="mb-3 d-flex align-items-center">
+      <div class="col pl-0">
+        <input type="text" class="form-control" placeholder="Search by Description" [(ngModel)]="searchTerm">
+      </div>
+      <div class="col-auto pr-0">
+        <button class="btn btn-primary btn-block" (click)="searchMedicine()">Search</button>
+      </div>
+    </div>
+
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">
+          <input type="checkbox" (click)="selectAll($event)">
+        </th>
         <th scope="col">Name</th>
         <th scope="col">Expiration Date</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let medicine of medicines">
-        <td>{{ medicine.medicineId }}</td>
+      <tr *ngFor="let medicine of medicines" (click)="toggleDiseaseSelection(medicine, $event)">
+        <td>
+          <input type="checkbox" [(ngModel)]="medicine.selected" (click)="$event.stopPropagation()">
+        </td>
         <td>{{ medicine.name }}</td>
         <td>{{ medicine.expirationDate }}</td>
       </tr>
       </tbody>
     </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button (click)="firstPage()" [disabled]="currentPage <= 0"><<</button>
+      <button (click)="previousPage()" [disabled]="currentPage <= 0">Previous</button>
+      <span>Page {{ currentPage + 1}} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+      <button (click)="lastPage()" [disabled]="currentPage >= totalPages - 1">>></button>
+    </div>
+
   </div>
 </div>

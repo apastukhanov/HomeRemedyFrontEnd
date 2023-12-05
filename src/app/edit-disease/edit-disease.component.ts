@@ -21,7 +21,7 @@ export class EditDiseaseComponent implements OnInit {
   disease: any = {umlsCode: 'UMLSDiseaseD', name: 'Disease Name', symptoms: []}
   symptomSearchTerm: string = '';
   selectedSymptoms: Symptom[] = [];
-  searchResults: Symptom[] = []; // To store all av
+  searchResults: Symptom[] = [];
 
   constructor(
       private router: Router,

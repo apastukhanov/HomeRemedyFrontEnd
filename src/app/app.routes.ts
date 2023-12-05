@@ -6,6 +6,8 @@ import {EditSymptomComponent} from "./edit-symptom/edit-symptom.component";
 import {AddSymptomComponent} from "./add-symptom/add-symptom.component";
 import {AddDiseaseComponent} from "./add-disease/add-disease.component";
 import {EditDiseaseComponent} from "./edit-disease/edit-disease.component";
+import {AddMedicineComponent} from "./add-medicine/add-medicine.component";
+import {EditMedicineComponent} from "./edit-medicine/edit-medicine.component";
 
 export const routes: Routes = [
     {
@@ -42,5 +44,15 @@ export const routes: Routes = [
         path: 'disease/edit/:id',
         component: EditDiseaseComponent,
         title: 'Edit Disease'
+    },
+    {
+      path: 'medicine/add',
+      component: AddMedicineComponent,
+      title: 'Add Medicine'
+    },
+    {
+      path: 'medicine/edit/:id',
+      component: EditMedicineComponent,
+      title: 'Edit Medicine'
     }
 ];
