@@ -11,6 +11,7 @@ import {EditMedicineComponent} from "./edit-medicine/edit-medicine.component";
 import {SeachDiseaseMedicineComponent} from "./seach-disease-medicine/seach-disease-medicine.component";
 import {ShowDiseaseComponent} from "./show-disease/show-disease.component";
 import {ShowMedicineComponent} from "./show-medicine/show-medicine.component";
+import {HomeComponent} from "./home/home.component";
 
 export const routes: Routes = [
     {
@@ -39,14 +40,14 @@ export const routes: Routes = [
       title: 'Add Symptom'
     },
     {
-        path: 'disease/add',
-        component: AddDiseaseComponent,
-        title: 'Add Disease'
+      path: 'disease/add',
+      component: AddDiseaseComponent,
+      title: 'Add Disease'
     },
     {
-        path: 'disease/edit/:id',
-        component: EditDiseaseComponent,
-        title: 'Edit Disease'
+      path: 'disease/edit/:id',
+      component: EditDiseaseComponent,
+      title: 'Edit Disease'
     },
     {
       path: 'medicine/add',
@@ -72,5 +73,10 @@ export const routes: Routes = [
       path: 'medicine/show/:id',
       component: ShowMedicineComponent,
       title: 'Disease'
+    },
+    {
+      path: '',
+      component: HomeComponent,
+      title: 'Home'
     }
 ];

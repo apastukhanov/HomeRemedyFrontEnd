@@ -1,10 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
 .custom-ng-select .ng-dropdown-panel {
     background-color: white;
     z-index: 1000;
-    outline: 1px solid lightgray; /* Replace with your desired outline color */
-    max-height: 125px; /* Adjust as needed */
-    overflow-y: auto; /* Enables vertical scrolling */
+    outline: 1px solid lightgray;
+    max-height: 125px;
+    overflow-y: auto;
     border-radius: 10px;
 }
 .custom-ng-select .ng-select-container .ng-value {
@@ -24,13 +23,13 @@ body {
 }
 
 .link-like-element {
-  color: #007bff; /* Bootstrap primary link color */
-  text-decoration: none; /* Remove underline by default */
+  color: #007bff;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .link-like-element:hover {
-  text-decoration: underline; /* Add underline on hover */
+  text-decoration: underline;
 }
 
 
@@ -38,5 +37,23 @@ body {
   padding: 2px 5px;
   margin-right: 5px;
   border-radius: 4px;
-  color: black; /* or any other color that suits the random background */
+  color: black;
 }
+
+.styled-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+}
+
+.styled-text h2 {
+  color: #007bff;
+  text-align: center;
+}
+
+.styled-text p {
+  margin-bottom: 1em;
+}
+
