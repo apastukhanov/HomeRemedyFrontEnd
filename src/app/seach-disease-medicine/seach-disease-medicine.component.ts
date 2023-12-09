@@ -25,6 +25,7 @@ export class SeachDiseaseMedicineComponent implements OnInit {
   currentPage: number = 0;
   pageSize = 10;
   totalItems = 10; // Total number of items
+  private nameColors: { [key: string]: string } = {};
 
   // pagination
   searchResults: any = [];
@@ -35,13 +36,13 @@ export class SeachDiseaseMedicineComponent implements OnInit {
     private diseaseService: DiseaseService,
     private symptomService: SymptomService,
     private diseaseMedicineService: DiseaseMedicineService,
-    private diseaseSymptomService: DiseaseSymptomService
+    private diseaseSymptomService: DiseaseSymptomService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
     this.loadItems();
-    console.log(this.searchResults);
   }
 
 
@@ -88,12 +89,11 @@ export class SeachDiseaseMedicineComponent implements OnInit {
             data.forEach( el => {
               this.items.push(
                 {disease: el[0],
-                  url:`show/disease/${el[0]["diseaseId"]}`,
+                  url:`disease/show/${el[0]["diseaseId"]}`,
                 name: el[0]['name'], countItems: el[1],
                 itemNames: el[2]})
             })
             this.items.sort((a: any, b: any) => b.countItems - a.countItems);
-            console.log(this.items);
           },
           (error) => {
             console.error('Error fetching symptoms:', error);
@@ -108,17 +108,16 @@ export class SeachDiseaseMedicineComponent implements OnInit {
           data.forEach( el => {
             this.items.push(
               {medicine: el[0],
-                url:`show/medicine/${el[0]["medicineId"]}`,
+                url:`medicine/show/${el[0]["medicineId"]}`,
                 name: el[0]['name'], countItems: el[1],
                 itemNames: el[2]})
           })
           this.items.sort((a: any, b: any) => b.countItems - a.countItems);
-          console.log(this.items);
         },
         (error) => {
           console.error('Error fetching symptoms:', error);
         }
-      );;
+      );
     }
     else {
       return
@@ -131,7 +130,6 @@ export class SeachDiseaseMedicineComponent implements OnInit {
   }
 
   searchItem() {
-    console.log("toggle search btn");
     this.currentPage = 0;
     this.loadItems();
 
@@ -140,8 +138,6 @@ export class SeachDiseaseMedicineComponent implements OnInit {
   captureSearchText(searchTerm: { term: string; items: any[] }) {
     this.searchTermItem = searchTerm['term'];
     if (this.searchTermItem && this.searchTermItem.length > 2) {
-      console.log(this.searchTermItem);
-      console.log(this.selectedDropdown);
       this.onSearch();
     }
   }
@@ -153,13 +149,11 @@ export class SeachDiseaseMedicineComponent implements OnInit {
   updateItems() {
     this.searchResults = [];
     this.selectedItems = [];
-    console.log(this.selectedDropdown);
 
   }
 
   private onSearch() {
     if (this.selectedDropdown === 'symptoms') {
-      console.log('search symptoms');
       this.symptomService.findAllOnPage(0, 10, this.searchTermItem).subscribe(
         (results) => {
           this.searchResults = [];
@@ -178,7 +172,6 @@ export class SeachDiseaseMedicineComponent implements OnInit {
         (results) => {
           this.searchResults = [];
           let data: [] = results["content"];
-          console.log(data);
           data.forEach(s => {
             s["itemSearchField"] = s["name"];
             this.searchResults.push(s);
@@ -191,5 +184,29 @@ export class SeachDiseaseMedicineComponent implements OnInit {
     } else {
       return
     }
+  }
+
+  navigate(url: string): void {
+    this.router.navigateByUrl(url);
+  }
+
+  processItemNames(itemNames: string) {
+    return itemNames.split(',').map(name => {
+      const trimmedName = name.trim();
+
+      if (!this.nameColors[trimmedName]) {
+        this.nameColors[trimmedName] = this.generateLightColor();
+      }
+
+      return {
+        name: trimmedName,
+        color: this.nameColors[trimmedName]
+      };
+    });
+  }
+
+  private generateLightColor(): string {
+    const lightColor = Math.floor(Math.random() * 0x666666 + 0x999999);
+    return '#' + lightColor.toString(16);
   }
 }

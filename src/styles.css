@@ -22,3 +22,21 @@ body {
   border-radius: 25px;
   background-color: white;
 }
+
+.link-like-element {
+  color: #007bff; /* Bootstrap primary link color */
+  text-decoration: none; /* Remove underline by default */
+  cursor: pointer;
+}
+
+.link-like-element:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+
+.list-element span {
+  padding: 2px 5px;
+  margin-right: 5px;
+  border-radius: 4px;
+  color: black; /* or any other color that suits the random background */
+}

@@ -64,12 +64,12 @@ export const routes: Routes = [
       title: 'Edit Medicine'
     },
     {
-      path: 'show/disease/:id',
+      path: 'disease/show/:id',
       component: ShowDiseaseComponent,
       title: 'Disease'
     },
     {
-      path: 'show/medicine/:id',
+      path: 'medicine/show/:id',
       component: ShowMedicineComponent,
       title: 'Disease'
     }

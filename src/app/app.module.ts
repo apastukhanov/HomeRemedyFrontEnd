@@ -23,6 +23,6 @@ import {MedicineListComponent} from "./medicine-list/medicine-list.component";
     // providers: [
     //   provideHttpClient(withFetch()),
     // ],
-    bootstrap: [AppComponent]
+    // bootstrap: [AppComponent]
 })
 export class AppModule { }
