@@ -12,7 +12,7 @@ export class MedicineService {
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = 'http://localhost:8080/medicines';
+    this.baseUrl = 'http://localhost:8080/api/medicines';
   }
 
   public findAll(): Observable<any> {

@@ -11,7 +11,7 @@ export class SymptomService {
   private baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = 'http://localhost:8080/symptoms';
+    this.baseUrl = 'http://localhost:8080/api/symptoms';
   }
 
   public findAll(): Observable<any> {
