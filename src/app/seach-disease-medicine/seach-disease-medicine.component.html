@@ -1,0 +1,61 @@
+<div class="card my-5">
+  <div class="card-body">
+
+
+
+    <!-- Search Field -->
+    <div class="mb-3 d-flex align-items-center">
+      <div class="col-auto pr-0 pl-0">
+        <!-- Dropdown Menu -->
+        <select class="form-control ml-0 mr-0 bg-dark text-white" [(ngModel)]="selectedDropdown" (change)="updateItems()">
+          <option value="diseases" selected="selected">Diseases</option>
+          <option value="symptoms">Symptoms</option>
+        </select>
+      </div>
+      <div class="col pl-0">
+        <ng-select class="form-control custom-ng-select ml-0 mr-0"
+                   [items]="searchResults"
+                   id="diseaseSearchField"
+                   bindLabel="itemSearchField"
+                   name="searchForm"
+                   [(ngModel)]="selectedItems"
+                   (search)="captureSearchText($event)"
+                   (change)="onItemSelect($event)"
+                   [multiple]="true"
+                   [searchable]="true">
+        </ng-select>
+      </div>
+      <div class="col-auto pr-0">
+        <button class="btn btn-primary btn-block" (click)="searchItem()">Search</button>
+      </div>
+    </div>
+
+
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Count Items</th>
+        <th scope="col">Item Names</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items" (click)="toggleItemSelection(item, $event)">
+        <td><a [href]="item.url">{{ item.name }}</a></td>
+        <td>{{ item.countItems }}</td>
+        <td>{{ item.itemNames }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button (click)="firstPage()" class="btn btn-primary mr-1" [disabled]="currentPage <= 0"><<</button>
+      <button (click)="previousPage()" class="btn btn-primary mr-1" [disabled]="currentPage <= 0">Back</button>
+      <span>Page {{ currentPage + 1}} of {{ totalPages }}</span>
+      <button (click)="nextPage()" class="btn btn-primary ml-1 mr-1" [disabled]="currentPage >= totalPages - 1">Next</button>
+      <button (click)="lastPage()" class="btn btn-primary" [disabled]="currentPage >= totalPages - 1">>></button>
+    </div>
+
+  </div>
+</div>

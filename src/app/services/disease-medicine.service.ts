@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 import {Disease} from "../models/disease";
 import {Medicine} from "../models/medicine";
+import {Symptom} from "../models/symptom";
+import {DiseaseService} from "./disease.service";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,10 @@ export class DiseaseMedicineService {
 
   public findByMedicine(medicine: Medicine): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/medicine`, medicine);
+  }
+
+  public findByDiseases(diseases: Disease[]): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/diseases`, diseases);
   }
 
   public deleteById(id: number): Observable<any> {

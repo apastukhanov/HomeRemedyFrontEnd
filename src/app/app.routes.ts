@@ -8,6 +8,9 @@ import {AddDiseaseComponent} from "./add-disease/add-disease.component";
 import {EditDiseaseComponent} from "./edit-disease/edit-disease.component";
 import {AddMedicineComponent} from "./add-medicine/add-medicine.component";
 import {EditMedicineComponent} from "./edit-medicine/edit-medicine.component";
+import {SeachDiseaseMedicineComponent} from "./seach-disease-medicine/seach-disease-medicine.component";
+import {ShowDiseaseComponent} from "./show-disease/show-disease.component";
+import {ShowMedicineComponent} from "./show-medicine/show-medicine.component";
 
 export const routes: Routes = [
     {
@@ -54,5 +57,20 @@ export const routes: Routes = [
       path: 'medicine/edit/:id',
       component: EditMedicineComponent,
       title: 'Edit Medicine'
+    },
+    {
+      path: 'search',
+      component: SeachDiseaseMedicineComponent,
+      title: 'Edit Medicine'
+    },
+    {
+      path: 'show/disease/:id',
+      component: ShowDiseaseComponent,
+      title: 'Disease'
+    },
+    {
+      path: 'show/medicine/:id',
+      component: ShowMedicineComponent,
+      title: 'Disease'
     }
 ];

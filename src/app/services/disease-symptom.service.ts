@@ -34,6 +34,10 @@ export class DiseaseSymptomService {
     return this.http.post<any>(`${this.baseUrl}/disease`, disease);
   }
 
+  public findBySymptoms(symptoms: Symptom[]): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/symptoms`, symptoms);
+  }
+
   public deleteById(id: number): Observable<any> {
     console.log(`in service deleting ${id}`);
     const url = `${this.baseUrl}/${id}`;

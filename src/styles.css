@@ -14,3 +14,11 @@
     margin: 4px;
 }
 
+body {
+  background-color: dimgrey;
+}
+
+.card {
+  border-radius: 25px;
+  background-color: white;
+}

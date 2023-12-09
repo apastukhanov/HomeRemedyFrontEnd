@@ -1,4 +1,5 @@
-<div class="container">
+<div class="card my-5">
+  <div class="card-body">
     <h2>Add Disease</h2>
     <form (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -24,7 +25,8 @@
             </ng-select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary mr-2">Save</button>
         <a routerLink="/disease" class="btn btn-secondary">Cancel</a>
     </form>
+  </div>
 </div>

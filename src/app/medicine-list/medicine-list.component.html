@@ -45,11 +45,11 @@
 
     <!-- Pagination Controls -->
     <div class="pagination-controls">
-      <button (click)="firstPage()" [disabled]="currentPage <= 0"><<</button>
-      <button (click)="previousPage()" [disabled]="currentPage <= 0">Previous</button>
+      <button (click)="firstPage()" class="btn btn-primary mr-1" [disabled]="currentPage <= 0"><<</button>
+      <button (click)="previousPage()" class="btn btn-primary mr-1" [disabled]="currentPage <= 0">Previous</button>
       <span>Page {{ currentPage + 1}} of {{ totalPages }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
-      <button (click)="lastPage()" [disabled]="currentPage >= totalPages - 1">>></button>
+      <button (click)="nextPage()" class="btn btn-primary ml-1 mr-1" [disabled]="currentPage >= totalPages - 1">Next</button>
+      <button (click)="lastPage()" class="btn btn-primary" [disabled]="currentPage >= totalPages - 1">>></button>
     </div>
 
   </div>
