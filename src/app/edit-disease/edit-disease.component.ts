@@ -18,7 +18,7 @@ import {DiseaseSymptomService} from "../services/disease-symptom.service";
   styleUrls: ['./edit-disease.component.css']
 })
 export class EditDiseaseComponent implements OnInit {
-  disease: any = {umlsCode: 'UMLSDiseaseD', name: 'Disease Name', symptoms: []}
+  disease: any = {deaseseId: 0, umlsCode: 'UMLSDiseaseD', name: 'Disease Name', symptoms: []}
   symptomSearchTerm: string = '';
   selectedSymptoms: Symptom[] = [];
   searchResults: Symptom[] = [];
@@ -52,6 +52,7 @@ export class EditDiseaseComponent implements OnInit {
                     this.diseaseSymptomService.findByDisease(this.disease).subscribe(
                         (symptoms) => {
                             this.selectedSymptoms = symptoms;
+                            this.disease.symptoms = symptoms;
                         },
                         (error) => {
                             console.error('Error fetching symptoms for the disease:', error);
