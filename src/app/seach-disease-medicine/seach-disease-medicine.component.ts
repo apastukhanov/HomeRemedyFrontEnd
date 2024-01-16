@@ -10,6 +10,8 @@ import {DiseaseMedicineService} from "../services/disease-medicine.service";
 import {Symptom} from "../models/symptom";
 import {SymptomService} from "../services/symptom.service";
 import {DiseaseSymptomService} from "../services/disease-symptom.service";
+import { FormControl, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-seach-disease-medicine',
@@ -32,12 +34,19 @@ export class SeachDiseaseMedicineComponent implements OnInit {
   selectedItems: any = [];
   selectedDropdown: any = "diseases";
 
+  searchInputControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(100),
+  ]);
+
   constructor(
     private diseaseService: DiseaseService,
     private symptomService: SymptomService,
     private diseaseMedicineService: DiseaseMedicineService,
     private diseaseSymptomService: DiseaseSymptomService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
   }
 
