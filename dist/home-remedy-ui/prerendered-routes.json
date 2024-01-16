@@ -1,0 +1,12 @@
+{
+  "routes": [
+    "/",
+    "/disease",
+    "/disease/add",
+    "/medicine",
+    "/medicine/add",
+    "/search",
+    "/symptom",
+    "/symptoms/add"
+  ]
+}
